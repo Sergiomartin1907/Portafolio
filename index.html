@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sergio Jesús Martín Rodríguez — Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --cream:#F5F0E8;
+  --cream2:#EDE8DC;
+  --ink:#0D0D0D;
+  --ink2:#2A2A2A;
+  --ink3:#5C5C5C;
+  --ink4:#9A9A9A;
+  --accent:#C8402A;
+  --accent2:#E85D3A;
+  --gold:#C9A84C;
+  --border:#D4CEBC;
+  --white:#FFFFFF;
+}
+
+html{scroll-behavior:smooth}
+body{font-family:'Syne',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.25rem 4rem;
+  background:rgba(245,240,232,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-mark{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.78rem;color:var(--accent);letter-spacing:0.12em;
+}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:0.8rem;font-weight:600;color:var(--ink3);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{
+  font-family:'JetBrains Mono',monospace;font-size:0.72rem;
+  padding:.5rem 1.25rem;border:1.5px solid var(--ink);color:var(--ink);
+  text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;
+  transition:background .2s,color .2s;
+}
+.nav-cta:hover{background:var(--ink);color:var(--cream)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  padding:9rem 4rem 5rem;
+  gap:4rem;
+  border-bottom:1px solid var(--border);
+  position:relative;
+}
+.hero-left{display:flex;flex-direction:column;justify-content:center}
+.hero-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.72rem;color:var(--accent);letter-spacing:0.2em;
+  text-transform:uppercase;margin-bottom:2rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.hero-label::before{content:'';width:3rem;height:1.5px;background:var(--accent)}
+
+.hero-name{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(4.5rem,7vw,7.5rem);
+  font-weight:900;line-height:0.92;
+  letter-spacing:-0.03em;
+  margin-bottom:2.5rem;
+}
+.hero-name em{font-style:italic;color:var(--accent)}
+
+.hero-tagline{
+  font-size:1.2rem;font-weight:400;color:var(--ink3);
+  line-height:1.75;max-width:480px;margin-bottom:3rem;
+}
+.hero-tagline strong{color:var(--ink);font-weight:600}
+
+.hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.btn-fill{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.9rem 2.25rem;background:var(--ink);color:var(--cream);
+  font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;
+  text-decoration:none;letter-spacing:.06em;text-transform:uppercase;
+  transition:background .2s,transform .15s;
+}
+.btn-fill:hover{background:var(--accent);transform:translateY(-2px)}
+.btn-line{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.9rem 2.25rem;border:1.5px solid var(--ink);color:var(--ink);
+  font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;
+  text-decoration:none;letter-spacing:.06em;text-transform:uppercase;
+  transition:background .2s,color .2s,transform .15s;
+}
+.btn-line:hover{background:var(--ink);color:var(--cream);transform:translateY(-2px)}
+
+.hero-right{
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding-bottom:3rem;
+}
+.hero-bio-card{
+  background:var(--ink);color:var(--cream);
+  padding:3rem;margin-bottom:2rem;
+}
+.hero-bio-card h3{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.7rem;color:var(--gold);letter-spacing:.2em;
+  text-transform:uppercase;margin-bottom:1.5rem;
+}
+.hero-bio-card p{
+  font-size:1rem;line-height:1.9;color:rgba(245,240,232,.75);
+  font-weight:400;margin-bottom:1.2rem;
+}
+.hero-bio-card p:last-child{margin-bottom:0}
+.hero-bio-card strong{color:var(--cream);font-weight:600}
+
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.stat{background:var(--cream2);padding:1.75rem 1.5rem}
+.stat-n{
+  font-family:'Playfair Display',serif;
+  font-size:2.75rem;font-weight:900;color:var(--accent);
+  line-height:1;margin-bottom:.4rem;
+}
+.stat-l{font-size:.75rem;font-weight:600;color:var(--ink4);letter-spacing:.1em;text-transform:uppercase}
+
+.hero-scroll{
+  position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);
+  font-family:'JetBrains Mono',monospace;font-size:.65rem;
+  color:var(--ink4);letter-spacing:.2em;text-transform:uppercase;
+  display:flex;flex-direction:column;align-items:center;gap:.75rem;
+}
+.hero-scroll-line{width:1.5px;height:3rem;background:var(--border);animation:scrollDown 2s ease-in-out infinite}
+@keyframes scrollDown{0%,100%{transform:scaleY(1);opacity:.4}50%{transform:scaleY(1.4);opacity:1}}
+
+/* ── SECTION BASE ── */
+.section{padding:7rem 4rem;border-bottom:1px solid var(--border)}
+.section-tag{
+  display:flex;align-items:center;gap:1.5rem;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.7rem;color:var(--accent);letter-spacing:.2em;text-transform:uppercase;
+  margin-bottom:1.5rem;
+}
+.section-tag::after{content:'';flex:1;height:1px;background:var(--border)}
+.section-heading{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.8rem,5vw,5rem);
+  font-weight:900;line-height:1;letter-spacing:-.03em;
+  margin-bottom:5rem;
+}
+.section-heading em{font-style:italic;color:var(--accent)}
+
+/* ── SKILLS STRIP ── */
+.skills-section{
+  background:var(--ink);
+  padding:3rem 4rem;
+  border-bottom:1px solid #222;
+}
+.skills-inner{
+  display:flex;align-items:center;gap:3rem;
+  overflow:hidden;flex-wrap:wrap;
+}
+.skills-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.68rem;color:var(--gold);letter-spacing:.2em;
+  text-transform:uppercase;white-space:nowrap;flex-shrink:0;
+}
+.skills-list{
+  display:flex;flex-wrap:wrap;gap:.75rem;
+}
+.skill-pill{
+  font-family:'JetBrains Mono',monospace;font-size:.75rem;
+  padding:.45rem 1rem;
+  border:1px solid rgba(255,255,255,.15);
+  color:rgba(245,240,232,.7);letter-spacing:.05em;
+  transition:border-color .2s,color .2s;
+}
+.skill-pill:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── PROJECTS ── */
+.project{
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:0;
+  border:1px solid var(--border);
+  margin-bottom:2rem;
+  transition:border-color .25s,transform .2s;
+  text-decoration:none;
+  color:inherit;
+  background:var(--white);
+}
+.project:hover{border-color:var(--accent);transform:translateY(-3px)}
+.project-num{
+  background:var(--cream2);
+  padding:3rem 2.5rem;
+  display:flex;flex-direction:column;justify-content:space-between;
+  border-right:1px solid var(--border);
+}
+.project-index{
+  font-family:'Playfair Display',serif;
+  font-size:5rem;font-weight:900;color:var(--cream);
+  line-height:1;
+  -webkit-text-stroke:1.5px var(--border);
+}
+.project:hover .project-index{-webkit-text-stroke-color:var(--accent);color:transparent}
+.project-year{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.68rem;color:var(--ink4);letter-spacing:.12em;
+}
+.project-body{padding:3rem}
+.project-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem}
+.project-name{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;font-weight:700;color:var(--ink);letter-spacing:-.02em;
+}
+.project-arrow{
+  width:42px;height:42px;
+  border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--ink3);font-size:1.1rem;flex-shrink:0;
+  transition:background .2s,color .2s,border-color .2s;
+}
+.project:hover .project-arrow{background:var(--accent);color:var(--white);border-color:var(--accent)}
+.project-desc{
+  font-size:1rem;color:var(--ink3);line-height:1.85;
+  font-weight:400;margin-bottom:2rem;
+}
+.project-footer{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:1.5rem;border-top:1px solid var(--border);flex-wrap:wrap;gap:.75rem;
+}
+.project-tech{display:flex;gap:.5rem;flex-wrap:wrap}
+.tech-tag{
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  padding:.3rem .75rem;
+  border:1px solid var(--border);color:var(--ink3);
+  letter-spacing:.05em;background:var(--cream);
+}
+.project-link{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  color:var(--accent);letter-spacing:.12em;text-transform:uppercase;
+  text-decoration:none;
+}
+.project:hover .project-link{text-decoration:underline}
+
+/* ── EXTRA REPOS ── */
+.repos-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1.5rem;margin-top:4rem;
+}
+.repo-card{
+  background:var(--white);border:1px solid var(--border);
+  padding:2rem;text-decoration:none;color:inherit;
+  display:flex;flex-direction:column;
+  transition:border-color .2s,transform .2s;
+}
+.repo-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.repo-name{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;margin-bottom:.6rem;color:var(--ink)}
+.repo-desc{font-size:.875rem;color:var(--ink3);line-height:1.7;flex:1;margin-bottom:1.25rem}
+.repo-footer{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid var(--border)}
+.repo-lang{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--ink4);letter-spacing:.08em}
+.repo-gh{font-size:.75rem;color:var(--accent)}
+
+/* ── CONTACT ── */
+.contact-section{
+  background:var(--ink);color:var(--cream);
+  padding:8rem 4rem;
+}
+.contact-tag{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  color:var(--gold);letter-spacing:.2em;text-transform:uppercase;
+  margin-bottom:2rem;display:flex;align-items:center;gap:1.5rem;
+}
+.contact-tag::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.1)}
+.contact-heading{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,6vw,6rem);font-weight:900;
+  line-height:.95;letter-spacing:-.03em;margin-bottom:3rem;
+}
+.contact-heading em{font-style:italic;color:var(--gold)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-text{font-size:1.05rem;color:rgba(245,240,232,.65);line-height:1.85;font-weight:400;margin-bottom:2.5rem}
+.contact-links{display:flex;flex-direction:column;gap:1rem}
+.contact-link{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.25rem 1.5rem;
+  border:1px solid rgba(255,255,255,.1);
+  text-decoration:none;color:var(--cream);
+  transition:border-color .2s,background .2s;
+}
+.contact-link:hover{border-color:var(--gold);background:rgba(201,168,76,.05)}
+.contact-link-name{font-size:.9rem;font-weight:600;letter-spacing:.06em}
+.contact-link-url{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:rgba(245,240,232,.4);letter-spacing:.08em}
+.contact-link-arr{color:rgba(245,240,232,.3);font-size:1.1rem}
+.contact-link:hover .contact-link-arr{color:var(--gold)}
+
+.contact-form-side{padding-top:.5rem}
+.form-group{margin-bottom:1.5rem}
+.form-group label{display:block;font-family:'JetBrains Mono',monospace;font-size:.68rem;color:rgba(245,240,232,.45);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.6rem}
+.form-group input,.form-group textarea{
+  width:100%;background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.12);
+  color:var(--cream);padding:1rem 1.25rem;
+  font-family:'Syne',sans-serif;font-size:.95rem;
+  outline:none;transition:border-color .2s;resize:none;
+}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(245,240,232,.2)}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--gold)}
+.btn-submit{
+  width:100%;padding:1.1rem;background:var(--gold);color:var(--ink);
+  font-family:'Syne',sans-serif;font-size:.85rem;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;
+  border:none;cursor:pointer;transition:background .2s;
+}
+.btn-submit:hover{background:#E0BC5A}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ink);
+  padding:2rem 4rem;
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.footer-name{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:rgba(245,240,232,.3);letter-spacing:.1em}
+.footer-stack{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:rgba(245,240,232,.3)}
+.footer-stack span{color:var(--gold)}
+
+/* ── ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding:7rem 1.5rem 4rem;gap:3rem}
+  .section{padding:5rem 1.5rem}
+  .skills-section{padding:2.5rem 1.5rem}
+  .project{grid-template-columns:1fr}
+  .project-num{border-right:none;border-bottom:1px solid var(--border);padding:2rem}
+  .contact-section{padding:5rem 1.5rem}
+  .contact-grid{grid-template-columns:1fr;gap:3rem}
+  footer{flex-direction:column;gap:.75rem;text-align:center;padding:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-mark">SJM · DEV</span>
+  <ul class="nav-links">
+    <li><a href="#sobre-mi">Bio</a></li>
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="mailto:sergiomartinrodriguez99@outlook.es" class="nav-cta">Disponible para prácticas</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left reveal">
+    <div class="hero-label">Desarrollador Full Stack</div>
+    <h1 class="hero-name">
+      Sergio<br>
+      Jesús<br>
+      <em>Martín.</em>
+    </h1>
+    <p class="hero-tagline">
+      Estudiante de <strong>Desarrollo de Aplicaciones Web</strong> en ILERNA. Especializado en el <strong>stack MERN</strong> — construyo interfaces modernas donde el diseño y la funcionalidad son inseparables.
+    </p>
+    <div class="hero-actions">
+      <a href="#proyectos" class="btn-fill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+        Ver proyectos
+      </a>
+      <a href="https://github.com/Sergiomartin1907" target="_blank" class="btn-line">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right reveal" style="transition-delay:.15s">
+    <div class="hero-bio-card">
+      <h3>// Sobre mí</h3>
+      <p>Soy desarrollador web en formación, combinando mis estudios en <strong>Desarrollo de Aplicaciones Web (FP)</strong> en ILERNA con aprendizaje autodidacta constante. Mi enfoque va más allá del código: me interesa el proceso completo de construir productos digitales, <strong>desde la idea hasta el despliegue</strong>.</p>
+      <p>Tengo experiencia en diseño <strong>UI/UX con Figma</strong>, lo que me permite traducir conceptos visuales a código con criterio y coherencia. Experimento con <strong>Three.js</strong> para llevar la web a una dimensión más interactiva.</p>
+      <p>Busco <strong>prácticas profesionales</strong> donde pueda aportar ideas, seguir creciendo y trabajar en un equipo creativo y colaborativo.</p>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n">MERN</div><div class="stat-l">Stack principal</div></div>
+      <div class="stat"><div class="stat-n">4+</div><div class="stat-l">Proyectos propios</div></div>
+      <div class="stat"><div class="stat-n">UI/UX</div><div class="stat-l">Figma &amp; diseño</div></div>
+      <div class="stat"><div class="stat-n">3D</div><div class="stat-l">Three.js &amp; WebGL</div></div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- SKILLS STRIP -->
+<div class="skills-section">
+  <div class="skills-inner">
+    <span class="skills-label">Stack &amp; herramientas</span>
+    <div class="skills-list">
+      <span class="skill-pill">MongoDB</span>
+      <span class="skill-pill">Express.js</span>
+      <span class="skill-pill">React</span>
+      <span class="skill-pill">Node.js</span>
+      <span class="skill-pill">TypeScript</span>
+      <span class="skill-pill">Tailwind CSS</span>
+      <span class="skill-pill">Figma</span>
+      <span class="skill-pill">Three.js</span>
+      <span class="skill-pill">Firebase</span>
+      <span class="skill-pill">REST APIs</span>
+      <span class="skill-pill">Git / GitHub</span>
+      <span class="skill-pill">JWT Auth</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section class="section reveal" id="proyectos">
+  <div class="section-tag">02 — Proyectos</div>
+  <h2 class="section-heading">Trabajo <em>destacado</em></h2>
+
+  <a href="https://github.com/Sergiomartin1907/BancoReact" target="_blank" class="project">
+    <div class="project-num">
+      <div class="project-index">01</div>
+      <div class="project-year">TypeScript · React</div>
+    </div>
+    <div class="project-body">
+      <div class="project-header">
+        <h3 class="project-name">BancoReact</h3>
+        <div class="project-arrow">↗</div>
+      </div>
+      <p class="project-desc">
+        Aplicación web de gestión financiera personal construida con <strong>React y TypeScript</strong>. El proyecto nació del reto de manejar operaciones bancarias con tipado estático estricto, garantizando la integridad de los datos en cada transacción. Implementa un sistema de cuentas, historial de movimientos y cálculo de saldos en tiempo real, todo dentro de una interfaz limpia y responsiva pensada para una experiencia de usuario fluida e intuitiva.
+      </p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-tag">TypeScript</span>
+          <span class="tech-tag">React</span>
+          <span class="tech-tag">CSS Modules</span>
+        </div>
+        <span class="project-link">Ver en GitHub →</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="https://github.com/Sergiomartin1907/CAR-PES" target="_blank" class="project">
+    <div class="project-num">
+      <div class="project-index">02</div>
+      <div class="project-year">JavaScript</div>
+    </div>
+    <div class="project-body">
+      <div class="project-header">
+        <h3 class="project-name">CAR-PES</h3>
+        <div class="project-arrow">↗</div>
+      </div>
+      <p class="project-desc">
+        Plataforma interactiva para el <strong>control y gestión de flujos logísticos</strong>. El sistema centraliza el seguimiento de vehículos y cargas, permitiendo registrar entradas, salidas y estados en tiempo real. Construida con JavaScript puro, pone el foco en la velocidad de respuesta y la claridad de la interfaz para operadores que necesitan información precisa de un vistazo. Incluye filtros dinámicos, panel de estado general y exportación de datos.
+      </p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">HTML5</span>
+          <span class="tech-tag">CSS3</span>
+        </div>
+        <span class="project-link">Ver en GitHub →</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="https://github.com/Sergiomartin1907/API-REST" target="_blank" class="project">
+    <div class="project-num">
+      <div class="project-index">03</div>
+      <div class="project-year">Node.js · MongoDB</div>
+    </div>
+    <div class="project-body">
+      <div class="project-header">
+        <h3 class="project-name">API REST</h3>
+        <div class="project-arrow">↗</div>
+      </div>
+      <p class="project-desc">
+        Arquitectura backend completa para la comunicación eficiente entre cliente y servidor. Desarrollada con <strong>Node.js, Express y MongoDB</strong>, implementa los principios REST con endpoints bien definidos, validación de datos, manejo de errores y autenticación mediante <strong>JWT</strong>. El proyecto demuestra cómo estructurar un backend escalable, separando capas de rutas, controladores y modelos, listo para consumirse desde cualquier cliente frontend.
+      </p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">Express</span>
+          <span class="tech-tag">MongoDB</span>
+          <span class="tech-tag">JWT</span>
+        </div>
+        <span class="project-link">Ver en GitHub →</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="https://github.com/Sergiomartin1907/CRUDKICKS" target="_blank" class="project">
+    <div class="project-num">
+      <div class="project-index">04</div>
+      <div class="project-year">HTML · CSS · JS</div>
+    </div>
+    <div class="project-body">
+      <div class="project-header">
+        <h3 class="project-name">CRUDKICKS</h3>
+        <div class="project-arrow">↗</div>
+      </div>
+      <p class="project-desc">
+        Sistema de gestión de inventario para una tienda de zapatillas, construido como ejercicio práctico de <strong>operaciones CRUD</strong> completas. Permite crear, leer, actualizar y eliminar productos con su información asociada (nombre, precio, talla, stock) a través de una interfaz responsiva y visualmente cuidada. El proyecto refuerza el manejo del DOM, almacenamiento local y organización del código en módulos cohesivos.
+      </p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-tag">HTML5</span>
+          <span class="tech-tag">CSS3</span>
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">LocalStorage</span>
+        </div>
+        <span class="project-link">Ver en GitHub →</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- Repos adicionales de GitHub -->
+  <div id="extra-repos"></div>
+
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section reveal" id="contacto">
+  <div class="contact-tag">03 — Contacto</div>
+  <h2 class="contact-heading">
+    Hablemos<br>
+    de tu <em>proyecto.</em>
+  </h2>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-text">
+        Estoy disponible para prácticas profesionales, proyectos freelance y colaboraciones. Busco un equipo donde pueda seguir creciendo, aportar ideas desde el primer día y construir productos que importen.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:sergiomartinrodriguez99@outlook.es" class="contact-link">
+          <div>
+            <div class="contact-link-name">Email directo</div>
+            <div class="contact-link-url">sergiomartinrodriguez99@outlook.es</div>
+          </div>
+          <span class="contact-link-arr">→</span>
+        </a>
+        <a href="https://github.com/Sergiomartin1907" target="_blank" class="contact-link">
+          <div>
+            <div class="contact-link-name">GitHub</div>
+            <div class="contact-link-url">github.com/Sergiomartin1907</div>
+          </div>
+          <span class="contact-link-arr">→</span>
+        </a>
+        <a href="https://www.linkedin.com/in/sergiomartin1907" target="_blank" class="contact-link">
+          <div>
+            <div class="contact-link-name">LinkedIn</div>
+            <div class="contact-link-url">linkedin.com/in/sergiomartin1907</div>
+          </div>
+          <span class="contact-link-arr">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="contact-form-side">
+      <div class="form-group">
+        <label>Tu nombre</label>
+        <input type="text" placeholder="¿Cómo te llamas?">
+      </div>
+      <div class="form-group">
+        <label>Tu email</label>
+        <input type="email" placeholder="tu@email.com">
+      </div>
+      <div class="form-group">
+        <label>Mensaje</label>
+        <textarea rows="5" placeholder="Cuéntame en qué puedo ayudarte..."></textarea>
+      </div>
+      <button class="btn-submit" onclick="this.textContent='Mensaje enviado ✓';this.style.background='#3B6D11';this.style.color='#EAF3DE'">
+        Enviar mensaje
+      </button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">© 2025 — Sergio Jesús Martín Rodríguez</span>
+  <span class="footer-stack">MERN Stack · TypeScript · <span>UI/UX</span></span>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => {
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('in'), i*90);
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+setTimeout(()=>document.querySelectorAll('.hero .reveal').forEach(el=>el.classList.add('in')),100);
+
+const known=['bancoreact','car-pes','api-rest','crudkicks'];
+const langColors={'JavaScript':'#C8A84C','TypeScript':'#378ADD','CSS':'#9B5DE5','HTML':'#C8402A','Python':'#1D9E75'};
+
+async function loadExtra(){
+  try{
+    const res=await fetch('https://api.github.com/users/Sergiomartin1907/repos?sort=updated&per_page=30&type=public');
+    if(!res.ok)return;
+    const repos=await res.json();
+    const extras=repos.filter(r=>!r.fork&&r.name!=='Sergiomartin1907'&&!known.includes(r.name.toLowerCase()));
+    if(!extras.length)return;
+    const wrap=document.getElementById('extra-repos');
+    const heading=document.createElement('h3');
+    heading.style.cssText='font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:700;color:var(--ink3);margin-top:4rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border)';
+    heading.textContent='Más repositorios en GitHub';
+    wrap.appendChild(heading);
+    const grid=document.createElement('div');
+    grid.className='repos-grid reveal';
+    extras.forEach(r=>{
+      const lc=langColors[r.language]||'#888780';
+      const card=document.createElement('a');
+      card.href=r.html_url;card.target='_blank';card.className='repo-card';
+      card.innerHTML=`
+        <div class="repo-name">${r.name}</div>
+        <p class="repo-desc">${r.description||'Repositorio en GitHub — haz clic para explorar el código fuente.'}</p>
+        <div class="repo-footer">
+          <span class="repo-lang" style="display:flex;align-items:center;gap:.4rem">
+            <span style="width:8px;height:8px;border-radius:50%;background:${lc};display:inline-block;flex-shrink:0"></span>
+            ${r.language||'—'}
+          </span>
+          <span class="repo-gh">Ver código →</span>
+        </div>`;
+      grid.appendChild(card);
+    });
+    wrap.appendChild(grid);
+    obs.observe(grid);
+  }catch(e){}
+}
+loadExtra();
+</script>
+</body>
+</html>
